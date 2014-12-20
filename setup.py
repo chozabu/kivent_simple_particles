@@ -7,8 +7,22 @@ try:
     from Cython.Distutils import build_ext
     have_cython = True
 except ImportError:
-    have_cython = False 
+    have_cython = False
+
+
+if have_cython:
+    particles_files = [
+        'particles.pyx'
+        ]
+    cmdclass = {'build_ext': build_ext}
+else:
+    particles_files = ['particles.c']
+    cmdclass = {}
+    
+ext = Extension('particles',
+    particles_files)
 
 setup(
-    ext_modules = cythonize("particles.pyx")
-)
+    name='particles',
+    cmdclass=cmdclass,
+    ext_modules=[ext])
