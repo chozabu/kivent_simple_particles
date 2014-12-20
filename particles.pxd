@@ -1,0 +1,9 @@
+cdef class particle:
+	cdef int ent
+	cdef float vx
+	cdef float vy
+	cdef float lifespan
+	cdef float maxlifespan
+	cdef float drag
+	cdef float gx
+	cdef float gy
